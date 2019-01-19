@@ -1,0 +1,25 @@
+{
+    "name": "INDIVIDUAL",
+    "cash": 9790.43,
+    "allocations": {
+        "IVV": 0.30,
+        "IJH": 0.05,
+        "IJR": 0.03,
+        "USRT": 0.03,
+        "IEFA": 0.24,
+        "IEMG": 0.05,
+        "ISTB": 0.14,
+        "IMTB": 0.08,
+        "IAGG": 0.08
+    },
+    "holdings": {
+        "IEFA": 306,
+        "IEMG": 75,
+        "IJH": 31,
+        "IJR": 22,
+        "IMTB": 65,
+        "ISTB": 127,
+        "IVV": 66,
+        "USRT": 53
+    }
+}
