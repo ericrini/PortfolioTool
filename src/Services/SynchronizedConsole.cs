@@ -45,7 +45,7 @@ namespace PortfolioTool
 
             public ConsoleContext SetBackground(ConsoleColor color)
             {
-                Console.ForegroundColor = color;
+                Console.BackgroundColor = color;
                 return this;
             }
             
