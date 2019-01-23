@@ -63,7 +63,7 @@ namespace PortfolioTool
 
             public ConsoleContext PadLeft(object output, int padding)
             {
-                Write(output.ToString().PadRight(padding));
+                Write(output.ToString().PadLeft(padding));
                 return this;
             }
 
