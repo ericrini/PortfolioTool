@@ -1,6 +1,6 @@
 {
     "name": "ROLLOVER IRA",
-    "cash": 768.70,
+    "cash": 1081.24,
     "allocations": {
         "IVV": 0.30,
         "IJH": 0.05,
@@ -13,11 +13,14 @@
         "IAGG": 0.08
     },
     "holdings": {
-        "IEFA": 388,
-        "IEMG": 96,
-        "IJH": 40,
+        "IAGG": 119,
+        "IEFA": 315,
+        "IEMG": 75,
+        "IJH": 21,
         "IJR": 28,
+        "IMTB": 126,
+        "ISTB": 223,
         "IVV": 85,
-        "USRT": 68
+        "USRT": 46
     }
 }

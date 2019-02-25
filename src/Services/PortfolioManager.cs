@@ -20,19 +20,19 @@ namespace PortfolioTool.Services
             await SynchronizedConsole.WriteLineAsync($"Beginning to parse file '{path}'.");
             string json = await File.ReadAllTextAsync(path);
             _portfolio = JsonConvert.DeserializeObject<Portfolio>(json);
-            _quotes = await _stockBroker.GetQuotes(GetUniqueSymbols().ToArray()); 
+            _quotes = await _stockBroker.GetQuotes(GetUniqueSymbols().ToArray());
         }
 
         public async Task Rebalance()
         {
-            if (_portfolio == null) 
+            if (_portfolio == null)
             {
                 throw new NullReferenceException("Must load a portfolio before attempting to rebalance.");
             }
 
             ValidateTotalAllocations();
 
-            using (ConsoleContext context = await ObtainContextAsync()) 
+            using (ConsoleContext context = await ObtainContextAsync())
             {
                 // The total value of the portfolio is the sum of all holdings at the current market price plus liquid cash.
                 double totalValue = _portfolio.Cash;
@@ -55,7 +55,7 @@ namespace PortfolioTool.Services
                     _portfolio.Allocations.TryGetValue(symbol, out double allocationPercent);
                     _portfolio.Holdings.TryGetValue(symbol, out double currentShares);
                     double marketValue = _quotes[symbol];
-                    double holdingPercent = Math.Round((currentShares * marketValue) / totalValue, 1);
+                    double holdingPercent = (currentShares * marketValue) / totalValue;
                     double deltaPercent = allocationPercent - holdingPercent;
                     double desiredValue = totalValue * allocationPercent;
                     double desiredShares = Math.Floor(desiredValue / marketValue);
@@ -64,7 +64,7 @@ namespace PortfolioTool.Services
                     ConsoleColor tradeColor = ConsoleColor.DarkGreen;
                     double totalTrade = marketValue * deltaShares;
 
-                    if (deltaShares < 0) 
+                    if (deltaShares < 0)
                     {
                         tradeText = "SELL";
                         tradeColor = ConsoleColor.DarkRed;
@@ -115,7 +115,7 @@ namespace PortfolioTool.Services
                 total += current.Value;
             }
 
-            if (total != 1) 
+            if (total != 1)
             {
                 throw new Exception($"Portfolio allocations in portfolio '{_portfolio.Name}' don't add up to 100%.");
             }
