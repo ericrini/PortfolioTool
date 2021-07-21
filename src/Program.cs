@@ -19,29 +19,41 @@ namespace PortfolioTool
                     throw new ArgumentException("Must specify path to account information.");
                 }
 
-                var portfolioDirectory = Path.GetFullPath(args[0]);
+                var portfolioPath = Path.GetFullPath(args[0]);
 
-                if (!Directory.Exists(portfolioDirectory))
+                if (File.Exists(portfolioPath))
                 {
-                    throw new ArgumentException($"The directory '{portfolioDirectory}' wasn't found.");
+                    await SynchronizedConsole.WriteLineAsync($"Beginning to read file '{portfolioPath}'.");
+                    var portfolioManager = new PortfolioManager();
+                    await portfolioManager.LoadPortfolioAsync(portfolioPath);
+                    await portfolioManager.Rebalance();
+                    return;
                 }
 
-                await SynchronizedConsole.WriteLineAsync($"Beginning to read directory '{portfolioDirectory}'.");
-
-                List<Task> tasks = new List<Task>();
-                foreach (string path in Directory.GetFiles(portfolioDirectory, "*.json")) 
+                if (Directory.Exists(portfolioPath))
                 {
-                    tasks.Add(Task.Run(async () => {
-                        var portfolioManager = new PortfolioManager();
-                        await portfolioManager.LoadPortfolioAsync(path);
-                        await portfolioManager.Rebalance();   
-                    }));
+                    await SynchronizedConsole.WriteLineAsync($"Beginning to read directory '{portfolioPath}'.");
+                    List<Task> tasks = new List<Task>();
+
+                    foreach (string path in Directory.GetFiles(portfolioPath, "*.json")) 
+                    {
+                        tasks.Add(Task.Run(async () => {
+                            var portfolioManager = new PortfolioManager();
+                            await portfolioManager.LoadPortfolioAsync(path);
+                            await portfolioManager.Rebalance();
+                        }));
+                    }
+
+                    await Task.WhenAll(tasks);
+                    return;
                 }
-                await Task.WhenAll(tasks);
+
+                throw new ArgumentException($"The path '{portfolioPath}' appears to be invalid.");
             }
             catch (Exception ex) 
             {
                 await SynchronizedConsole.WriteLineAsync(ex.Message, ConsoleColor.DarkRed);
+                await SynchronizedConsole.WriteLineAsync(ex.StackTrace, ConsoleColor.DarkRed);
             }
         }
     }

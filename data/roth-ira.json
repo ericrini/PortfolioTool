@@ -1,26 +1,24 @@
 {
     "name": "ROTH IRA",
-    "cash": 1424,
+    "cash": 7402,
     "allocations": {
-        "IVV": 0.30,
-        "IJH": 0.05,
+        "IVV": 0.31,
+        "IJH": 0.10,
         "IJR": 0.03,
-        "USRT": 0.03,
-        "IEFA": 0.24,
-        "IEMG": 0.05,
-        "ISTB": 0.14,
-        "IMTB": 0.08,
-        "IAGG": 0.08
+        "USRT": 0.04,
+        "IEFA": 0.31,
+        "IEMG": 0.06,
+        "ISTB": 0.10,
+        "IMTB": 0.05
     },
     "holdings": {
-        "IAGG": 60,
-        "IEFA": 154,
-        "IEMG": 41,
-        "IJH": 9,
-        "IJR": 12,
+        "IEFA": 246,
+        "IEMG": 54,
+        "IJH": 10,
+        "IJR": 16,
         "IMTB": 65,
-        "ISTB": 110,
-        "IVV": 41,
-        "USRT": 23
+        "ISTB": 115,
+        "IVV": 50,
+        "USRT": 38
     }
 }

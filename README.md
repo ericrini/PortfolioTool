@@ -68,8 +68,11 @@ INDIVIDUAL ($68,229.46)
 
  Entering these orders into your broker's trade sheet will align this portfolio to to the model allocations. Here's some helpful hints to get the best results.
 
-- Run the tool after the market closes for the day.
-- Always verify the total transaction amount from the application and the trade confirmation total match.
+- Build the portfolio from funds that have low expense ratios and no trading fees.
+- Choose a day with low volatility to place orders.
+- Wait until the market closes to generate the order recommendations.
 - Use a limit order with a 1 day period of execution.
-- If your account has available margin, you can place all the orders at once. In a non-marginable account you will need to place all the SELL orders and then place the BUY orders when the cash from those orders is available for trading.
-- You can use a trailing stop order instead of a stop limit order if that makes more sense for your purposes.
+- Verify the total transaction amount from the application and the trade confirmation sheet match before confirming an order.
+- In accounts with margin available (EX: individual brokerage account), you can place all the buy and sell orders at once. In other accounts (EX: 401k account) you will need to place all the SELL orders and wait for them to clear before making the BUY orders, unless there is sufficient liquid cash in the account to cover the BUY order before the SELL orders clear.
+- Do not run this tool more frequently than once every 3-4 days or you will run into issues excessively trading unsettled funds.
+- This tool suggests a stop limit order but a trailing stop may make more sense for longer term "fire and forget" type investments.
